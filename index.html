@@ -32,6 +32,30 @@
             border-radius: 8px;
             background: #9bd7f0;
         }
+        
+        #scene-annotated #annotations {
+            font-size: 12px;
+            fill: #333;
+            stroke: #999;
+            stroke-width: 1;
+        }
+        
+        #scene-annotated #annotations text,
+        #scene-annotated #annotations line {
+            pointer-events: none;
+        }
+        
+        #scene-adjusted #smoke {
+            fill: #d7e0e2;
+            stroke: #77858a;
+            stroke-width: 1;
+        }
+        
+        #scene-adjusted #mailbox {
+            fill: #315b72;
+            stroke: #1e3847;
+            stroke-width: 2;
+        }
     </style>
 </head>
 
@@ -171,6 +195,79 @@
             </g>
 		</svg>
             <figcaption>Annotated scene (Step 2)</figcaption>
+        </figure>
+
+        <figure id="scene-adjusted-figure">
+            <svg id="scene-adjusted" viewBox="0 0 800 500" role="img" aria-labelledby="svg-title-adjusted svg-desc-adjusted">
+				<title id="svg-title-adjusted">An adjusted house and garden scene</title>
+				<desc id="svg-desc-adjusted">A balanced house and garden scene with stronger contrast, a dashed fence, a stone path, mailbox, and chimney smoke.</desc>
+
+				<!-- Keep the original sky and grass scale while strengthening contrast. -->
+				<rect x="0" y="0" width="800" height="340" fill="#8fcfe9"></rect>
+				<rect x="0" y="340" width="800" height="160" fill="#6fa957"></rect>
+
+				<!-- Sun and cloud retain their original positions. -->
+				<circle cx="680" cy="92" r="48" fill="#ffc928" stroke="#9a6815" stroke-width="2"></circle>
+				<ellipse cx="180" cy="105" rx="70" ry="28" fill="#ffffff" stroke="#b8cbd1" stroke-width="1"></ellipse>
+				<circle cx="135" cy="102" r="30" fill="#ffffff" stroke="#b8cbd1" stroke-width="1"></circle>
+				<circle cx="215" cy="97" r="36" fill="#ffffff" stroke="#b8cbd1" stroke-width="1"></circle>
+
+				<!-- Slightly shift the tree left to balance the house. -->
+				<g id="tree-adjusted" transform="translate(-10 0)">
+					<rect x="90" y="250" width="30" height="115" fill="#6b432d" stroke="#422b20" stroke-width="3"></rect>
+					<circle cx="105" cy="210" r="65" fill="#367c42" stroke="#24552d" stroke-width="3"></circle>
+					<circle cx="58" cy="237" r="45" fill="#438e4b" stroke="#24552d" stroke-width="2"></circle>
+					<circle cx="155" cy="238" r="48" fill="#2f713b" stroke="#24552d" stroke-width="2"></circle>
+				</g>
+
+				<!-- Slightly shift the house right for a more balanced composition. -->
+				<g id="house-adjusted" transform="translate(15 0)">
+					<rect x="285" y="235" width="270" height="170" fill="#f5c16d" stroke="#5b3828" stroke-width="5"></rect>
+					<polygon points="260,240 420,115 580,240" fill="#a83f38" stroke="#5b3828" stroke-width="5"></polygon>
+					<rect x="480" y="145" width="34" height="78" fill="#744033" stroke="#4a2922" stroke-width="3"></rect>
+
+					<!-- Door and windows use varied stroke widths for clearer contrast. -->
+					<rect x="390" y="315" width="60" height="90" fill="#58362b" stroke="#321f1a" stroke-width="5"></rect>
+					<circle cx="438" cy="362" r="5" fill="#f8d65f"></circle>
+					<rect x="315" y="275" width="55" height="50" fill="#81c9df" stroke="#294e5a" stroke-width="4"></rect>
+					<line x1="342.5" y1="275" x2="342.5" y2="325" stroke="#294e5a" stroke-width="2"></line>
+					<line x1="315" y1="300" x2="370" y2="300" stroke="#294e5a" stroke-width="2"></line>
+					<rect x="475" y="275" width="55" height="50" fill="#81c9df" stroke="#294e5a" stroke-width="4"></rect>
+					<line x1="502.5" y1="275" x2="502.5" y2="325" stroke="#294e5a" stroke-width="2"></line>
+					<line x1="475" y1="300" x2="530" y2="300" stroke="#294e5a" stroke-width="2"></line>
+				</g>
+
+				<!-- Make the fence easier to read with a dashed, varied-weight stroke. -->
+				<polyline points="30,395 30,345 55,395 55,345 80,395 80,345 105,395 105,345 130,395 130,345 155,395" fill="none" stroke="#f8e7b4" stroke-width="6" stroke-dasharray="12 5" stroke-linejoin="round"></polyline>
+				<line x1="20" y1="370" x2="165" y2="370" stroke="#a87536" stroke-width="5" stroke-dasharray="10 4"></line>
+				<line x1="20" y1="395" x2="165" y2="395" stroke="#a87536" stroke-width="5" stroke-dasharray="10 4"></line>
+
+				<!-- Add a curved stone footpath that leads directly to the door. -->
+				<path d="M 420 405 C 410 430, 350 442, 330 500 L 520 500 C 500 450, 465 430, 450 405 Z" fill="#d9b978" stroke="#87663d" stroke-width="4"></path>
+				<path d="M 420 420 C 405 438, 380 450, 370 475" fill="none" stroke="#f0d69d" stroke-width="5" stroke-dasharray="2 12"></path>
+
+				<!-- Add a small mailbox beside the new path. -->
+				<g id="mailbox">
+					<rect x="245" y="350" width="38" height="28" rx="4" ry="4"></rect>
+					<polygon points="245,350 264,335 283,350"></polygon>
+					<rect x="261" y="378" width="5" height="28"></rect>
+				</g>
+
+				<!-- Add a subtle puff of smoke above the chimney. -->
+				<g id="smoke">
+					<ellipse cx="500" cy="125" rx="13" ry="9"></ellipse>
+					<ellipse cx="515" cy="102" rx="16" ry="11"></ellipse>
+					<ellipse cx="505" cy="76" rx="11" ry="8"></ellipse>
+				</g>
+
+				<!-- Retain the garden details and caption. -->
+				<ellipse cx="650" cy="410" rx="62" ry="18" fill="#438b35" stroke="#286226" stroke-width="2"></ellipse>
+				<circle cx="625" cy="393" r="10" fill="#d94351" stroke="#8b2530" stroke-width="1"></circle>
+				<circle cx="650" cy="387" r="10" fill="#efb82e" stroke="#8b6814" stroke-width="1"></circle>
+				<circle cx="675" cy="394" r="10" fill="#bd52b8" stroke="#743272" stroke-width="1"></circle>
+				<text x="400" y="475" text-anchor="middle" fill="#294b24" font-size="22" font-weight="bold">Welcome to our garden</text>
+			</svg>
+            <figcaption>Adjusted scene (Step 3)</figcaption>
         </figure>
     </main>
 </body>
